@@ -9,15 +9,15 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Jeremy Hahn"]
   spec.email         = ["mail@jeremyhahn.com"]
 
-  spec.summary       = %q{TODO: Provides a full featured AWS client library.}
-  spec.description   = %q{TODO: Provides a set of AWS API client objects that work using credential files, instance roles, or assumed roles. }
-  spec.homepage      = "TODO: put up a homepage"
+  spec.summary       = %q{Provides a full featured AWS client library with dynamic credential loading.}
+  spec.description   = %q{Provides a set of AWS API client objects that can be instantiated using credential files / profiles, instance roles, or assumed roles. }
+  spec.homepage      = "https://github.com/jeremyhahn/awsclient"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
   # delete this section to allow pushing this gem to any host.
   if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com'"
+    spec.metadata['allowed_push_host'] = "https://rubygems.org"
   else
     raise "RubyGems 2.0 or newer is required to protect against public gem pushes."
   end
