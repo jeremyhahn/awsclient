@@ -534,7 +534,7 @@ module Awsclient
       end
 
       def random_string(length = nil)
-        length = rand(15..30)
+        length ||= rand(15..30)
         o = [('a'..'z'), ('A'..'Z'), (1..9)].map { |i| i.to_a }.flatten
         (0...length).map { o[rand(o.length)] }.join
       end
