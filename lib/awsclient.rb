@@ -5,6 +5,7 @@ module Awsclient
 
   class Connection
 
+    attr_accessor :client_options
     attr_accessor :credentials
     attr_accessor :region
 
@@ -22,6 +23,10 @@ module Awsclient
 
     SERVICES.each do |svc|
       attr_accessor svc
+    end
+
+    def initialize(client_options = {})
+      self.client_options = client_options
     end
 
     def credentials
@@ -84,452 +89,452 @@ module Awsclient
       iam.get_user.user.arn.split(':')[4]
     end
 
-    def acm(options = {})
+    def acm
       @acm ||= ::Aws::ACM::Client.new(
         credentials: credentials,
         region: region
       )
     end
 
-    def apigateway(options = {})
+    def apigateway
       @apigateway ||= ::Aws::APIGateway::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def autoscaling(options = {})
+    def autoscaling
       @autoscaling ||= ::Aws::AutoScaling::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def cloudformation(options = {})
+    def cloudformation
       @cloudformation ||= ::Aws::CloudFormation::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def cloudfront(options = {})
+    def cloudfront
       @cloudformation ||= ::Aws::CloudFront::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def cloudhsm(options = {})
+    def cloudhsm
       @cloudformation ||= ::Aws::CloudHSM::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def cloudsearch(options = {})
+    def cloudsearch
       @cloudformation ||= ::Aws::CloudSearch::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def cloudtrail(options = {})
+    def cloudtrail
       @cloudtrail ||= ::Aws::CloudTrail::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def cloudwatch(options = {})
+    def cloudwatch
       @cloudwatch ||= ::Aws::CloudWatch::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def cloudwatchevents(options = {})
+    def cloudwatchevents
       @cloudwatchevents ||= ::Aws::CloudWatchEvents::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def cloudwatchlogs(options = {})
+    def cloudwatchlogs
       @cloudwatchlogs ||= ::Aws::CloudWatchLogs::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def codecommit(options = {})
+    def codecommit
       @codecommit ||= ::Aws::CodeCommit::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def codedeploy(options = {})
+    def codedeploy
       @codedeploy ||= ::Aws::CodeDeploy::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def codepipeline(options = {})
+    def codepipeline
       @codepipeline ||= ::Aws::CodePipeline::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def cognitoidentity(options = {})
+    def cognitoidentity
       @cognitoidentity ||= ::Aws::CognitoIdentity::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def cognitosync(options = {})
+    def cognitosync
       @cognitosync ||= ::Aws::CognitoSync::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def configservice(options = {})
+    def configservice
       @codedeploy ||= ::Aws::ConfigService::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def datapipeline(options = {})
+    def datapipeline
       @datapipeline ||= ::Aws::DataPipeline::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def databasemigrationservice(options = {})
+    def databasemigrationservice
       @databasemigrationservice ||= ::Aws::DatabaseMigrationService::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def devicefarm(options = {})
+    def devicefarm
       @devicefarm ||= ::Aws::DeviceFarm::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def directconnect(options = {})
+    def directconnect
       @directconnect ||= ::Aws::DirectConnect::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def directoryservice(options = {})
+    def directoryservice
       @directoryservice ||= ::Aws::DirectoryService::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def dynamodb(options = {})
+    def dynamodb
       @dynamodb ||= ::Aws::DynamoDB::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def dynamodbstreams(options = {})
+    def dynamodbstreams
       @dynamodbstreams ||= ::Aws::DynamoDBStreams::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def ec2(options = {})
+    def ec2
       @ec2 ||= ::Aws::EC2::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def ecr(options = {})
+    def ecr
       @ecr ||= ::Aws::ECR::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def ecs(options = {})
+    def ecs
       @ecs ||= ::Aws::ECS::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def efs(options = {})
+    def efs
       @efs ||= ::Aws::EFS::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def emr(options = {})
+    def emr
       @emr ||= ::Aws::EMR::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def elasticbeanstalk(options = {})
+    def elasticbeanstalk
       @elasticbeanstalk ||= ::Aws::ElasticBeanstalk::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def elasticloadbalancing(options = {})
+    def elasticloadbalancing
       @elasticloadbalancing ||= ::Aws::ElasticLoadBalancing::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def elastictranscoder(options = {})
+    def elastictranscoder
       @elastictranscoder ||= ::Aws::ElasticTranscoder::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def elasticsearchservice(options = {})
+    def elasticsearchservice
       @elasticsearchservice ||= ::Aws::ElasticsearchService::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def firehose(options = {})
+    def firehose
       @firehose ||= ::Aws::Firehose::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def gamelift(options = {})
+    def gamelift
       @gamelift ||= ::Aws::GameLift::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def glacier(options = {})
+    def glacier
       @glacier ||= ::Aws::Glacier::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def iam(options = {})
+    def iam
       @iam ||= ::Aws::IAM::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def importexport(options = {})
+    def importexport
       @importexport ||= ::Aws::ImportExport::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def inspector(options = {})
+    def inspector
       @importexport ||= ::Aws::Inspector::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def iot(options = {})
+    def iot
       @iot ||= ::Aws::IoT::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def iotdataplane(options = {})
+    def iotdataplane
       @iotdataplane ||= ::Aws::IoTDataPlane::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def kms(options = {})
+    def kms
       @kms ||= ::Aws::KMS::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def kinesis(options = {})
+    def kinesis
       @kinesis ||= ::Aws::Kinesis::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def lambda(options = {})
+    def lambda
       @lambda ||= ::Aws::Lambda::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def lambdapreview(options = {})
+    def lambdapreview
       @lambdapreview ||= ::Aws::LambdaPreview::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def machinelearning(options = {})
+    def machinelearning
       @machinelearning ||= ::Aws::MachineLearning::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def marketplacecommerceanalytics(options = {})
+    def marketplacecommerceanalytics
       @marketplacecommerceanalytics ||= ::Aws::MarketplaceCommerceAnalytics::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def opsworks(options = {})
+    def opsworks
       @opsworks ||= ::Aws::OpsWorks::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def rds(options = {})
+    def rds
       @rds ||= ::Aws::RDS::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def route53(options = {})
+    def route53
       @route53 ||= ::Aws::Route53::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def route53domains(options = {})
+    def route53domains
       @route53domains ||= ::Aws::Route53Domains::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def s3(options = {})
+    def s3
       @s3 ||= ::Aws::S3::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
     def s3_bucket(name, options = {})
       @bucket ||= ::Aws::S3::Bucket.new(name, {
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def ses(options = {})
+    def ses
       @ses ||= ::Aws::SES::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def sns(options = {})
+    def sns
       @sns ||= ::Aws::SNS::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def sqs(options = {})
+    def sqs
       @sqs ||= ::Aws::SQS::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def ssm(options = {})
+    def ssm
       @ssm ||= ::Aws::SSM::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def sts(options = {})
+    def sts
       @sts ||= ::Aws::STS::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def swf(options = {})
+    def swf
       @swf ||= ::Aws::SWF::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def simpledb(options = {})
+    def simpledb
       @simpledb ||= ::Aws::SimpleDB::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def storagegateway(options = {})
+    def storagegateway
       @storagegateway ||= ::Aws::StorageGateway::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def support(options = {})
+    def support
       @support ||= ::Aws::Support::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def waf(options = {})
+    def waf
       @waf ||= ::Aws::WAF::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
-    def workspaces(options = {})
+    def workspaces
       @workspaces ||= ::Aws::WorkSpaces::Client.new({
         credentials: credentials,
         region: region
-      }.merge(options))
+      }.merge(client_options))
     end
 
   private
