@@ -413,6 +413,13 @@ module Awsclient
       }.merge(options))
     end
 
+    def opsworks(options = {})
+      @opsworks ||= ::Aws::OpsWorks::Client.new({
+        credentials: credentials,
+        region: region
+      }.merge(options))
+    end
+
     def rds(options = {})
       @rds ||= ::Aws::RDS::Client.new({
         credentials: credentials,
