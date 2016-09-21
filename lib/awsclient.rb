@@ -78,7 +78,7 @@ module Awsclient
     end
 
     def region
-      @region = client_options[:region] || 'us-east-1'
+      @region ||= client_options[:region] || 'us-east-1'
     end
 
     def underscored_region
