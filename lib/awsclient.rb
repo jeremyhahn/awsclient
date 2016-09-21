@@ -43,7 +43,10 @@ module Awsclient
 
     def load_credentials(profile_name='default')
       creds = ::Aws::SharedCredentials.new(profile_name: profile_name)
-      return creds if creds.set?
+      if creds.set?
+        load_region_from_profile(profile_name)
+        return creds
+      end
       instance_profile_credentials
     end
 
@@ -74,11 +77,12 @@ module Awsclient
     end
 
     def profile=(profile_name)
+      load_region_from_profile(profile_name)
       self.credentials = ::Aws::SharedCredentials.new(profile_name: profile_name)
     end
 
     def region
-      @region ||= client_options[:region] || 'us-east-1'
+      @region ||= (client_options[:region] || 'us-east-1')
     end
 
     def underscored_region
@@ -549,6 +553,12 @@ module Awsclient
         length ||= rand(15..30)
         o = [('a'..'z'), ('A'..'Z'), (1..9)].map { |i| i.to_a }.flatten
         (0...length).map { o[rand(o.length)] }.join
+      end
+
+      def load_region_from_profile(profile_name)
+        awsconfig = File.read("#{ENV['HOME']}/.aws/config")
+        matcher = awsconfig.match(/\[profile\s#{profile_name}\]\r?\n?region\s*=(.*)/)
+        @region = matcher[1] if matcher
       end
 
   end
